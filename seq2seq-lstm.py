@@ -1,17 +1,3 @@
-"""Seq2Seq Machine Translation (Handwritten LSTM, No Attention)
-
-要求对齐：
-- 只把参考代码中的普通 RNN 替换为 LSTM
-- 严禁调用 nn.LSTM / nn.GRU / nn.LSTMCell / nn.GRUCell
-- 不添加 Attention
-
-运行：
-  python seq2seq-lstm.py --num_epoch 10 --max_len 10 --batch_size 128
-
-依赖：
-  pip install sacrebleu tqdm
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -130,7 +116,7 @@ def create_dataloader(zh_sents, en_sents, max_len, batch_size, pad_id):
 
 
 class ManualLSTMCell(nn.Module):
-    """手写 LSTM Cell（禁止 nn.LSTM/nn.LSTMCell）。
+    """手写 LSTM Cell
 
     公式：
     - z_t = W_x x_t + W_h h_{t-1} + b \in R^{N×4H}

@@ -1,17 +1,3 @@
-"""Seq2Seq Machine Translation (Handwritten LSTM + Attention)
-
-严格遵守作业约束：
-- 不调用 nn.LSTM / nn.GRU / nn.LSTMCell / nn.GRUCell 等现成循环模块
-- LSTM Cell 内部用 nn.Linear + 激活函数手写门控逻辑
-- Decoder 端实现对 Encoder hidden states 的 Attention
-
-运行方式与参考代码保持一致：
-  python seq2seq-lstm-attn.py --num_epoch 10 --max_len 10 --batch_size 128
-
-注意：本文件会尝试导入 sacrebleu 与 tqdm；如果环境缺包，请先安装：
-  pip install sacrebleu tqdm
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -129,7 +115,7 @@ def create_dataloader(zh_sents, en_sents, max_len, batch_size, pad_id):
 
 
 class ManualLSTMCell(nn.Module):
-    """手写 LSTM Cell（单层、单时间步）。
+    """手写 LSTM Cell（单层、单时间步）
 
     数学定义（批量形式）：
     - x_t \in R^{N\times D}
